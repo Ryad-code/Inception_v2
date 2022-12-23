@@ -1,5 +1,6 @@
 #!/bin/bash
 #If wordpress database doesn't exist --> First time running the container
+#Creates database, users, changes root password & runs mysqld
 if [ ! -d /var/lib/mysql/wordpress ]; then
 	mysqld&
 	until mysqladmin ping; do

@@ -6,11 +6,11 @@ MAINTAINER	mlaouedj <mlaouedj@student.42.fr>
 RUN		apt-get update -y
 RUN		apt-get upgrade -y
 
-#Nginx, OpenSSL & PHP-fpm installation
+#Nginx & OpenSSL installation
 RUN		apt-get -y install nginx openssl
-RUN		mkdir -p /run/nginx
 
 #Configuration Nginx
+RUN             mkdir -p /run/nginx
 RUN		mkdir -p /var/www/inception/html
 RUN		chown -R www-data:www-data /var/www/inception
 COPY            conf/inception.conf /etc/nginx/sites-available/inception
@@ -23,5 +23,5 @@ COPY		conf/ssl.sh /etc/nginx/ssl
 RUN		chmod 777 /etc/nginx/ssl/ssl.sh
 RUN		./etc/nginx/ssl/ssl.sh
 
-#Nginx loop
+#Running Nginx deamon
 CMD		["nginx", "-g", "daemon off;"]

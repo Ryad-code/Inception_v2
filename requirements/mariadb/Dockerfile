@@ -1,9 +1,8 @@
-
 FROM		debian:buster
 
 MAINTAINER	mlaouedj <mlaouedj@student.42.fr>
 
-#Update & Upgarde
+#Update & Upgrade
 RUN		apt-get update -y
 RUN		apt-get upgrade -y
 
@@ -17,7 +16,7 @@ RUN             chmod 777 /usr/local/bin/start.sh
 #Copying setup file
 COPY		conf/mysql_file.cnf /etc/mysql/mariadb.conf.d/
 
-#Creating repositories
+#Creating repositories and giving permissions
 RUN		mkdir -p /run/mysqld && chown -R mysql:root /run/mysqld && chown -R mysql:mysql /var/lib/mysql
 
 #Running starting script
