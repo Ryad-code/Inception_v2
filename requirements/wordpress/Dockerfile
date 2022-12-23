@@ -4,8 +4,6 @@ RUN		apt-get -y update
 Run		apt-get upgrade
 RUN		apt-get -y install wget mariadb-client php7.3-fpm php7.3-common php7.3-mysql
 
-#RUN		apt-get -y install procps
-
 RUN     	mkdir -p /var/www/inception/html
 
 COPY		conf/start.sh /tmp/
